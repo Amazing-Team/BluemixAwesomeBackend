@@ -86,6 +86,26 @@ app.get('/', function(req , res){
 	});
 });
 
+app.get('/*', function(req , res){
+
+	var options = {
+  		url: 'https://api.transavia.com/v1/flightoffers/?origin='+req.originalUrl.slice(1)+'&origindeparturedate=201510&adults=1',
+  		headers: {
+    		'apikey': 'qGFOKGb5LSFSwvuQz2NAYOKnbud7sbKQ'
+ 		}
+	};
+
+	request(options, function (error, response, body) {
+		if (!error && response.statusCode == 200) {
+	  		res.format({
+  				'application/json': function(){
+    				res.send(body);
+  				}
+	  		});
+		}
+	});
+});
+
 /*app.get('/*', function(req , res){
 
 	var demo_url = 'https://access.alchemyapi.com/calls/data/GetNews?apikey=384d985e64b91fcb3da012da626810bf901d3cc6&return=enriched.url.title&start=1442966400&end=1443654000&q.enriched.url.enrichedTitle.entities.entity=|text='+req.originalUrl.slice( 1 )+',type=company|&q.enriched.url.enrichedTitle.docSentiment.type=positive&q.enriched.url.enrichedTitle.taxonomy.taxonomy_.label=technology%20and%20computing&count=1&outputMode=json';
