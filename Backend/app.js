@@ -23,6 +23,8 @@ var server = require('http').createServer(app);
 
 var request = require('request');
 
+var transavia = require('./transaviaAPI');
+
 //Create the AlchemyAPI object
 var AlchemyAPI = require('./alchemyapi');
 var alchemyapi = new AlchemyAPI();
@@ -60,6 +62,14 @@ var fs = require("fs");
 }, null, true);
 */
 app.get('/textanalysis', example);
+
+app.get('/transavia', function (req, res) {
+  res.send(transavia.buildUrl({
+    origin: ['ams'],
+    adults: ['1'],
+    origindeparturedate: ['201511']
+  }));
+});
 
 app.get('/', function(req , res){
 
