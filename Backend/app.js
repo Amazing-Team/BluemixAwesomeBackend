@@ -67,7 +67,8 @@ app.get('/transavia', function (req, res) {
   res.send(transavia.buildUrl({
     origin: ['ams'],
     adults: ['1'],
-    origindeparturedate: ['201511']
+    origindeparturedate: ['201511'],
+    orderby: ['OriginDepartureDate', 'Destination']
   }));
 });
 
