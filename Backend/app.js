@@ -71,7 +71,7 @@ app.get('/transavia', function (req, res) {
   }));
 });
 
-/*app.get('/', function(req , res){
+app.get('/', function(req , res){
 
 	var demo_url = 'https://access.alchemyapi.com/calls/data/GetNews?apikey=384d985e64b91fcb3da012da626810bf901d3cc6&return=enriched.url.title&start=1442966400&end=1443654000&q.enriched.url.enrichedTitle.entities.entity=|text=IBM,type=company|&q.enriched.url.enrichedTitle.docSentiment.type=positive&q.enriched.url.enrichedTitle.taxonomy.taxonomy_.label=technology%20and%20computing&count=1&outputMode=json';
 
@@ -85,11 +85,11 @@ app.get('/transavia', function (req, res) {
 		}
 	});
 });
-*/
-app.get('/:origin/:destination/:startdate/:enddate/:price/:people', function(req , res){
+
+app.get('/:origin/:startdate/:enddate/:price/:people', function(req , res){
 
 	var options = {
-  		url: 'https://api.transavia.com/v1/flightoffers/?origin='+req.params.origin+'&destination='+req.params.destination+'&origindeparturedate='+req.params.startdate+'&destinationdeparturedate='+req.params.enddate+'&price='+req.params.price+'&adults='+req.params.people,
+  		url: 'https://api.transavia.com/v1/flightoffers/?origin='+req.params.origin+'&origindeparturedate='+req.params.startdate+'&destinationdeparturedate='+req.params.enddate+'&price='+req.params.price+'&limit=20&adults='+req.params.people,
   		headers: {
     		'apikey': 'qGFOKGb5LSFSwvuQz2NAYOKnbud7sbKQ'
  		}
@@ -105,6 +105,8 @@ app.get('/:origin/:destination/:startdate/:enddate/:price/:people', function(req
 		}
 	});
 });
+
+
 
 /*app.get('/*', function(req , res){
 
