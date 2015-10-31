@@ -29,20 +29,18 @@ var resources = {
  *                        param [
  *                        val, val, val
  *                        ],
- *                        param [
- *                          val, val, val
- *                          ]
+*                         param [
+ *                        val, val, val
+ *                        ]
+ *                        }
  */
 var buildUrl = function (params) {
-  console.log('function');
   var result = '';
 
   for (var index in params) {
     if (params.hasOwnProperty(index)) {
       var param = params[index];
       
-      console.log(param);
-
       result += resources[index];
 
       param.forEach(function (value) {
